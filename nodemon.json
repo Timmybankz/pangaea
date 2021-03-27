@@ -1,0 +1,8 @@
+{
+    "env": {
+        "MONGO_ATLAS_PW": "Timmybankz@123.",
+        "MONGO_ATLAS_USERNAME": "rootUser",
+        "PUBLISHER_PORT": "8000",
+        "SUBSCRIBER_PORT": "9000"
+    }
+}
