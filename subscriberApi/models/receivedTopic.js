@@ -17,8 +17,8 @@ const receivedTopicSchema = mongoose.Schema({
 
 function validateTopic(topic) {
   const schema = Joi.object({
-    topic: Joi.string().required(),
-    data: Joi.object().required()
+    topic: Joi.string().required().label('Topic'),
+    data: Joi.object().required().label('Data')
   });
 
   return schema.validate(topic, { abortEarly: false });

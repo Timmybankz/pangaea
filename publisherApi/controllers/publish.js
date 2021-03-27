@@ -12,7 +12,7 @@ router.post('/:topic', async (req, res, next) => {
 
     const { error: validationError } = ValidatePublish(req.body);
     if (validationError)
-      return res.status(400).json(validationError);
+      return res.status(400).json(validationError.details[0].message);
 
     const topic = req.params.topic;
     const data = req.body.data;

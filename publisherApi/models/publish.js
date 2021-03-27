@@ -21,7 +21,7 @@ const publishTopicSchema = mongoose.Schema({
 
 function validatePublish(topic) {
   const schema = Joi.object({
-    data: Joi.object().required()
+    data: Joi.object().required().label('Data')
   });
 
   return schema.validate(topic, { abortEarly: false });

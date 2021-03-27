@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
 
     const { error: validationError } = ValidateTopic(req.body);
     if (validationError)
-      return res.status(400).json(validationError);
+      return res.status(400).json(validationError.details[0].message);
 
     const receievedBy = req.protocol + '://' + req.get('host') + req.originalUrl;
     const receivedTopic = new ReceivedTopics({

@@ -9,7 +9,7 @@ router.post('/:topic', async (req, res) => {
 
     const { error: validationError } = ValidateSubscription(req.body);
     if (validationError)
-      return res.status(400).json(validationError);
+      return res.status(400).json(validationError.details[0].message);
 
     const subscriber = new Subscribers({
         _id: new mongoose.Types.ObjectId(),
@@ -17,11 +17,11 @@ router.post('/:topic', async (req, res) => {
         url: req.body.url
     });
 
-    Subscribers.findOne({ url: req.body.url.toLowerCase() })
+    Subscribers.findOne({ url: req.body.url.toLowerCase(), topic: req.params.topic })
         .lean()
         .then(async (response) => {
             if (response)
-                return res.status(400).json('Subscription already exist for the provided URL');
+                return res.status(400).json('This subscription already exist for the provided URL');
             
             await subscriber.save()
                 .then(() => {

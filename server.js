@@ -5,6 +5,7 @@ let publisherApp = express();
 let subscriberApp = express();
 
 const cors = require('cors');
+require('dotenv').config();
 
 publisherApp.use(cors());
 subscriberApp.use(cors());

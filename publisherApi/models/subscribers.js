@@ -5,7 +5,6 @@ const subscribersSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     topic:  {
         type: String,
-        lowercase: true,
         required: true
     },
     url:  {
@@ -21,7 +20,7 @@ const subscribersSchema = mongoose.Schema({
 
 function validateSubscription(subscriber) {
   const schema = Joi.object({
-    url: Joi.string().required()
+    url: Joi.string().required().label('URL')
   });
 
   return schema.validate(subscriber, { abortEarly: false });
